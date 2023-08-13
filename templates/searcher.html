@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <h1 class="navbar-brand">Neurus Restobar</h1>
+                <a class="btn btn-dark" href="https://neurus-app.herokuapp.com/" role="button">Ir a ver bandejas</a>
+                <a class="btn btn-dark" href="https://neurus-app.herokuapp.com/platos" role="button">Ir a ver platos</a>
+                <a class="btn btn-dark" href="https://neurus-app.herokuapp.com/ingredientes" role="button">Ir a ver ingredientes</a>
+                    <form class="example" action="buscador">
+                        <input type="text" placeholder="Buscar.." name="search">
+                    </form>
+                    </div>
+                </nav>
+                <div>
+                    <table class="table table-striped table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Detalles</th>
+                          </tr>
+                        </thead>
+                        {% for i in items %}
+                            {% if i[3] == "bandeja" %}
+                            <tbody>
+                            <tr>
+                                <td>{{i[1]}}</td>
+                                <td>{{i[2]}}</td>
+                                <td><a class="btn btn-light" href="https://neurus-app.herokuapp.com/bandeja/{{ i[0] }}" role="button">Ver más</a></td>
+                            </tr>
+                            </tbody>
+                            {% endif %}
+                            {% if i[3] == "plato" %}
+                            <tbody>
+                            <tr>
+                                <td>{{i[1]}}</td>
+                                <td>{{i[2]}}</td>
+                                <td><a class="btn btn-light" href="https://neurus-app.herokuapp.com/plato/{{ i[0] }}" role="button">Ver más</a></td>
+                            </tr>
+                            </tbody>
+                            {% endif %}
+                            {% if i[3] == "ingrediente" %}
+                            <tbody>
+                            <tr>
+                                <td>{{i[1]}}</td>
+                                <td>{{i[2]}}</td>
+                                <td><a class="btn btn-light"  href="https://neurus-app.herokuapp.com/ingrediente/{{ i[0] }}" role="button">Ver más</a></td>
+                            </tr>
+                            </tbody>
+                            {% endif %}
+                        {% endfor %}
+                </div> 
+    </body>
+</html>

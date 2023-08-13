@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+    <style>
+    </style>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <nav class="navbar navbar-dark bg-dark">
+            <div class="container-fluid">
+                <h1 class="navbar-brand">Neurus Restobar</h1>
+                <a class="btn btn-dark" href="https://neurus-app.herokuapp.com/" role="button">Ir a ver bandejas</a>
+                <a class="btn btn-dark" href="https://neurus-app.herokuapp.com/ingredientes" role="button">Ir a ver ingredientes</a>
+            <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Platos
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="?val=nd">Nombre desc</a></li>
+                  <li><a class="dropdown-item" href="?val=na">Nombre asc</a></li>
+                  <li><a class="dropdown-item" href="?val=pd">Precio desc</a></li>
+                  <li><a class="dropdown-item" href="?val=pa">Precio asc</a></li>
+                </ul>
+              </div>
+              <form class="example" action="buscador">
+                <input type="text" placeholder="Buscar.." name="search">
+            </form>
+            </div>
+          </nav>
+          <div>
+            <table class="table table-striped table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">Plato</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Detalles</th>
+                  </tr>
+                </thead>
+                {% if request.args.get('val') == None %}
+                    {% for i in platos %}
+                    <tbody>
+                    <tr>
+                        <td>{{i[1]}}</td>
+                        <td>{{i[2]}}</td>
+                        <td><a class="btn btn-light" href="plato/{{i[0]}}" role="button">Ver más</a></td>
+                    </tr>
+                    </tbody>
+                    {% endfor %}
+                {% endif %}
+                {% if request.args.get('val') == "nd" %}
+                    {% for i in platos|sort(attribute='1', reverse=false) %}
+                    <tbody>
+                    <tr>
+                        <td>{{i[1]}}</td>
+                        <td>{{i[2]}}</td>
+                        <td><a class="btn btn-light" href="plato/{{i[0]}}" role="button">Ver más</a></td>
+                    </tr>
+                    </tbody>
+                    {% endfor %}
+                {% endif %}
+                {% if request.args.get('val') == "na" %}
+                    {% for i in platos|sort(attribute='1', reverse=true) %}
+                    <tbody>
+                    <tr>
+                        <td>{{i[1]}}</td>
+                        <td>{{i[2]}}</td>
+                        <td><a class="btn btn-light" href="plato/{{i[0]}}" role="button">Ver más</a></td>
+                    </tr>
+                    </tbody>
+                    {% endfor %}
+                {% endif %}
+                {% if request.args.get('val') == "pd" %}
+                    {% for i in platos|sort(attribute='2', reverse=true) %}
+                    <tbody>
+                    <tr>
+                        <td>{{i[1]}}</td>
+                        <td>{{i[2]}}</td>
+                        <td><a class="btn btn-light" href="plato/{{i[0]}}" role="button">Ver más</a></td>
+                    </tr>
+                    </tbody>
+                    {% endfor %}
+                {% endif %}
+                {% if request.args.get('val') == "pa" %}
+                    {% for i in platos|sort(attribute='2', reverse=false) %}
+                    <tbody>
+                    <tr>
+                        <td>{{i[1]}}</td>
+                        <td>{{i[2]}}</td>
+                        <td><a class="btn btn-light" href="plato/{{i[0]}}" role="button">Ver más</a></td>
+                    </tr>
+                    </tbody>
+                    {% endfor %}
+                {% endif %}
+              </table>
+        </div>
+    </body>
+</html>
+

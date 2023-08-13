@@ -1,1 +1,6 @@
 # TI_T4
+
+Se debe construir un sitio web, que esté disponible de forma pública, que muestre la información que entregan los distintos servicios que componen la API.
+Las diferentes aerolíneas se han percatado de una gran falta de conocimiento en los clientes, tanto de las opciones de menú existentes en la carta como de los componentes que conforman dichas opciones.
+Con la intención de ofrecer un mejor servicio a los clientes y de evitar incurrir en las mismas explicaciones una y otra vez, lo han contratado a usted para construir una página web, accesible por el público de las compañías aéreas y que permita visualizar toda la información relacionada a la carta: las opciones de menú ofrecidas, los platos que componen dichas opciones, los ingredientes más básicos y diferente información asociada a cada entidad.
+La página construida debe ser dinámica, flexible y navegable, ofreciendo así una mejor experiencia a los usuarios. Además, las aerolíneas le han hecho notar su preocupación acerca del diseño de la plataforma a construir.
